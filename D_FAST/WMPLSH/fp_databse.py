@@ -59,9 +59,10 @@ def save_fingerprints_to_pickle(fingerprints, output_file):
 # Example usage
 # folder_path = 'E:/D_FAST_code/fp_database'  # Specify folder path for fingerprints
 # output_file = 'E:/D_FAST_code/fp_database.pkl'  # Specify output path for the pickle file
-folder_path = 'E:/D_FAST_data/detection/database'  # Specify folder path for detection database
-output_file = 'E:/D_FAST_data/detection/database_detection.pkl'  # Specify output path for the detection pickle file
-
+# folder_path = 'E:/D_FAST_data/detection/database'  # Specify folder path for detection database
+# output_file = 'E:/D_FAST_data/detection/database_detection.pkl'  # Specify output path for the detection pickle file
+folder_path = 'E:/D_FAST_data/detection_ep_eq_noise/database'  # Specify folder path for detection database
+output_file = 'E:/D_FAST_data/detection_ep_eq_noise/database.pkl'
 # Load fingerprints from the specified folder
 fingerprints = load_fingerprints_from_folder(folder_path)
 # Save the loaded fingerprints to a pickle file

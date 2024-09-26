@@ -146,17 +146,36 @@ def process_cross_correlation(input_folder1, input_folder2):
 
 
 # Cross-correlation processing section
-type = 'ep'
-input_folder_signal = f"E:/D_FAST_data/{type}_waveforms/B023/fp"  # Folder containing signal fingerprints
-input_folder_noise = "E:/D_FAST_data/noise_waveforms/fp"  # Folder containing noise fingerprints
-result_folder = "E:/D_FAST_data/results/pair_sim"  # Folder to save results
-start_time = time.time()  # Start timing
-
+type = 'earthquake'
+input_folder_signal = f"E:/D_FAST_data/{type}/B023/fp"  # Folder containing signal fingerprints
+input_folder_noise = "E:/D_FAST_data/noise/fp_D_FAST"  # Folder containing noise fingerprints
+result_folder = "E:/D_FAST_data/results/pair_sim/eq_ep_noise"  # Folder to save results
 # Process cross-correlation between signal and noise fingerprints
 average_sim, max_sim, min_sim, noise_signal = process_cross_correlation(input_folder_signal, input_folder_noise)
 # Process auto-correlation for signal fingerprints
 average_sim, max_sim, min_sim, sim_details, auto_signal = process_auto_correlation(input_folder_signal)
-
+#average_sim, max_sim, min_sim, sim_details, auto_noise = process_auto_correlation(input_folder_noise)
 # Save the results to .npy files
 np.save(os.path.join(result_folder, f'noise_{type}.npy'), noise_signal)
+#np.save(os.path.join(result_folder, 'auto_noise.npy'), auto_noise)
 np.save(os.path.join(result_folder, f'auto_{type}.npy'), auto_signal)
+
+
+
+
+
+
+
+
+# result_folder = "E:/D_FAST_data/results/pair_sim/snr2/D_FAST"  # Folder to save results
+# input_folder_signal='E:/D_FAST_data/snr2/fp_D_FAST'
+# input_folder_noise ='E:/D_FAST_data/snr2/noise_fp_D_FAST'
+# # Process cross-correlation between signal and noise fingerprints
+# average_sim, max_sim, min_sim, noise_signal = process_cross_correlation(input_folder_signal, input_folder_noise)
+# # Process auto-correlation for signal fingerprints
+# average_sim, max_sim, min_sim, sim_details, auto_signal = process_auto_correlation(input_folder_signal)
+# average_sim, max_sim, min_sim, sim_details, auto_noise = process_auto_correlation(input_folder_noise)
+# # Save the results to .npy files
+# np.save(os.path.join(result_folder, 'noise_signal.npy'), noise_signal)
+# np.save(os.path.join(result_folder, 'auto_noise.npy'), auto_noise)
+# np.save(os.path.join(result_folder, 'auto_signal.npy'), auto_signal)

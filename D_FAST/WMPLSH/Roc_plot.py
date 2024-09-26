@@ -1,3 +1,4 @@
+import os
 import pickle
 import random
 from itertools import combinations
@@ -90,11 +91,14 @@ def load_pickle_file(pickle_file):
         data = pickle.load(f)  # Load the data from the pickle file
         return data  # Return the loaded data
 
-
+pickle_file = 'E:/D_FAST_data/detection_ep_eq_noise/database.pkl'
+keys_output_file = 'E:/D_FAST_data/detection_ep_eq_noise/keys.pkl'
+index_table_output_file = 'E:/D_FAST_data/detection_ep_eq_noise/index_table.pkl'
+results_folder = "E:/D_FAST_data/results"
 # Specify paths to data files
-pickle_file = 'E:/D_FAST_code/detection/database_detection.pkl'
-keys_output_file = 'E:/D_FAST_code/keys1.pkl'
-index_table_output_file = 'E:/D_FAST_code/index_table1.pkl'
+# pickle_file = 'E:/D_FAST_code/detection/database_detection.pkl'
+# keys_output_file = 'E:/D_FAST_code/keys1.pkl'
+# index_table_output_file = 'E:/D_FAST_code/index_table1.pkl'
 
 # Load data
 fingerprints, filenames = load_fingerprints_from_pickle(pickle_file)  # Load fingerprints and filenames
@@ -118,7 +122,7 @@ for similarity_threshold in threshold_values:
     recalls = []  # List to store recall values for each query
 
     # Iterate over query fingerprints
-    for query_idx in range(1, 144):
+    for query_idx in range(0, 145):
         query_fingerprint = fingerprints[query_idx]  # Get the query fingerprint
         candidates = weighted_multi_probe_hashing(query_fingerprint, fingerprints, filenames, index_table, keys,
                                                   weights,
@@ -128,12 +132,10 @@ for similarity_threshold in threshold_values:
         noise_candidates = [candidate for candidate in candidates if candidate.startswith('noise')]
         FP = len(noise_candidates)
         TP = len(candidates) - FP
-        TN = 341 - FP  # Assuming total negative cases
-        FN = 145 - TP  # Assuming total positive cases
 
         # Calculate precision and recall
         precision = TP / (TP + FP) if (TP + FP) > 0 else 0
-        recall = TP / 145  # Assuming total positive cases
+        recall = TP / 145 # Assuming total positive cases
 
         precisions.append(precision)  # Append precision for this query
         recalls.append(recall)  # Append recall for this query
@@ -147,4 +149,8 @@ plt.figure()
 plt.plot(avg_recalls, avg_precisions, marker='o', color='b')  # Plot recall vs precision
 plt.xlabel('Recall')  # Label for x-axis
 plt.ylabel('Precision')  # Label for y-axis
-plt.title('ROC Curve under Different Thresholds')  # Title
+plt.title('ROC Curve under Different Thresholds for D_FAST')  # Title
+plt.savefig(os.path.join(results_folder, 'd_fast.png'))
+plt.show()
+print('Recall',avg_recalls)
+print('Precision',avg_precisions)

@@ -95,11 +95,13 @@ def initialize_index_table(pickle_file, m, n, l, keys_output_file, index_table_o
 
     return index_table, keys  # Return the index table and keys
 
-
+pickle_file = 'E:/D_FAST_data/detection_ep_eq_noise/database.pkl'  # Path to the input pickle file
+keys_output_file = 'E:/D_FAST_data/detection_ep_eq_noise/keys.pkl'  # Path for the output pickle file for keys
+index_table_output_file = 'E:/D_FAST_data/detection_ep_eq_noise/index_table.pkl'
 # Example usage
-pickle_file = 'E:/D_FAST_data/detection/database_detection.pkl'  # Path to the input pickle file
-keys_output_file = 'E:/D_FAST_data/keys1.pkl'  # Path for the output pickle file for keys
-index_table_output_file = 'E:/D_FAST_data/index_table1.pkl'  # Path for the output pickle file for the index table
+# pickle_file = 'E:/D_FAST_data/detection/database_detection.pkl'  # Path to the input pickle file
+# keys_output_file = 'E:/D_FAST_data/keys1.pkl'  # Path for the output pickle file for keys
+# index_table_output_file = 'E:/D_FAST_data/index_table1.pkl'  # Path for the output pickle file for the index table
 m = 10  # Number of bits in each key
 n = 20  # Number of keys to generate
 l = 3200  # Length of each fingerprint

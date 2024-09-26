@@ -4,16 +4,16 @@ import matplotlib.pyplot as plt
 
 # Define the station and types for processing
 sta = 'B023'
-type1 = 'eq'  # Type for eq pairs
-type2 = 'ep'  # Type for px pairs
-results_folder = "E:/D_FAST_data/results/pair_sim"  # Path to the results folder
+type1 = 'earthquake'  # Type for eq pairs
+type2 = 'explosion'  # Type for px pairs
+results_folder = "E:/D_FAST_data/results/pair_sim/eq_ep_noise"  # Path to the results folder
 
 # Load results from .npy files using os.path.join to construct complete file paths
-auto_eq = np.load(os.path.join(results_folder, "auto_eq.npy"))  # Auto-correlation for eq pairs
-cross_eq_noise = np.load(os.path.join(results_folder, "noise_eq.npy"))  # Cross-correlation between eq and noise
+auto_eq = np.load(os.path.join(results_folder, f"auto_{type1}.npy"))  # Auto-correlation for eq pairs
+cross_eq_noise = np.load(os.path.join(results_folder, f"noise_{type1}.npy"))  # Cross-correlation between eq and noise
 auto_noise = np.load(os.path.join(results_folder, "auto_noise.npy"))  # Auto-correlation for noise pairs
-auto_px = np.load(os.path.join(results_folder, "auto_px.npy"))  # Auto-correlation for px pairs
-cross_px_noise = np.load(os.path.join(results_folder, "noise_px.npy"))  # Cross-correlation between px and noise
+auto_px = np.load(os.path.join(results_folder, f"auto_{type2}.npy"))  # Auto-correlation for px pairs
+cross_px_noise = np.load(os.path.join(results_folder,f"noise_{type2}.npy"))  # Cross-correlation between px and noise
 
 # Plot the histogram for the results
 plt.figure(figsize=(10, 6))  # Set figure size

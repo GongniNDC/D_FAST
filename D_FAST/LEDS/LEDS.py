@@ -216,25 +216,31 @@ def process_file(input_folder, output_base_folder):
     return average_cpu_time  # Return the average CPU time
 
 
-# Specify input and output directories for processing
-type1 = 'eq'
-type2 = 'ep'
-
-input_folder = f"E:/D_FAST_data/{type1}_waveforms/B023/P_waveform"
-output_folder = f"E:/D_FAST_data/{type1}_waveforms/B023/fp"
-if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
-    os.makedirs(output_folder)
-average_cpu_time = process_file(input_folder, output_folder)  # Process the files
-
-input_folder = f"E:/D_FAST_data/{type2}_waveforms/B023/P_waveform"
-output_folder = f"E:/D_FAST_data/{type2}_waveforms/B023/fp"
-if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
-    os.makedirs(output_folder)
-average_cpu_time = process_file(input_folder, output_folder)  # Process the files
-
-# Uncomment the following block to process noise waveform files
-# input_folder = "E:/D_FAST_code/noise_waveforms/wave_strim"
-# output_folder = "E:/D_FAST_code/noise_waveforms/fp"
+# # Specify input and output directories for processing
+# type1 = 'eq'
+# type2 = 'ep'
+#
+# input_folder = f"E:/D_FAST_data/{type1}_waveforms/B023/P_waveform"
+# output_folder = f"E:/D_FAST_data/{type1}_waveforms/B023/fp"
 # if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
 #     os.makedirs(output_folder)
 # average_cpu_time = process_file(input_folder, output_folder)  # Process the files
+#
+# input_folder = f"E:/D_FAST_data/{type2}_waveforms/B023/P_waveform"
+# output_folder = f"E:/D_FAST_data/{type2}_waveforms/B023/fp"
+# if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
+#     os.makedirs(output_folder)
+# average_cpu_time = process_file(input_folder, output_folder)  # Process the files
+
+# Uncomment the following block to process noise waveform files
+input_folder = "E:/D_FAST_data/noise/wave_strim"
+output_folder = "E:/D_FAST_data/noise/fp_D_FAST"
+if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
+    os.makedirs(output_folder)
+average_cpu_time = process_file(input_folder, output_folder)  # Process the files
+
+input_folder = 'E:/D_FAST_data/snr2/wav'
+output_folder = 'E:/D_FAST_data/snr2/fp_D_FAST'
+if not os.path.exists(output_folder):  # Create output folder if it doesn't exist
+    os.makedirs(output_folder)
+average_cpu_time = process_file(input_folder, output_folder)  # Process the files
